@@ -28,6 +28,17 @@ services:
   proxy:
     build:
       - context: ./proxy # Use Dockerfile from the /proxy
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 80:8000
+    volumes:
+      - static-data:/vol/static
+
+volumes:
+  postgres-data
+  static-data
 
 
 
